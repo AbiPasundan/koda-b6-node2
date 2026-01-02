@@ -17,9 +17,26 @@ import  moment from 'moment';
 // console.log(a);
 
 
+// function dateNow(params) {
+//     if (params === "number" || params === "boolean") {
+//         return "Format Tanggal tidak valid"
+//     }
+//     const times = moment(params, 'DD/MM/YYYY', true).format("DD/MM/YYYY")
+//     return times
+// }
+
+// console.log(dateNow(true))
+// // dateNow("10/12/2009")
+
 function dateNow(params) {
-    const times = moment(params, 'DD/MM/YYYY', true).format("DD/MM/YYYY")
-    return times
+  if (typeof params === 'number' || typeof params === 'boolean') {
+    return "Format Tanggal tidak valid";
+  }
+  const times = moment(params, 'DD/MM/YYYY', true);
+  if (!times.isValid()) {
+      return "Format Tanggal tidak valid";
+  }
+  return times.format('DD/MM/YYYY');
 }
 
-console.log(dateNow("10/12/2009"))
+console.log(dateNow("11/04/2006"));
